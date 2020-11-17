@@ -15,7 +15,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeDao employeeDao;
 	
 	@Override
-	public List<Employee> query(Employee e) {
+	public List<Employee> selectAll() {
 		// TODO Auto-generated method stub
 		List<Employee> list = employeeDao.findAll();
 		return list;
@@ -26,6 +26,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		// TODO Auto-generated method stub
 		
 		return employeeDao.save(e)!=null?1:0;
+	}
+
+	@Override
+	public Employee getEmployee(String id) {
+		// TODO Auto-generated method stub
+		return employeeDao.getOne(id);
 	}
 
 	@Override

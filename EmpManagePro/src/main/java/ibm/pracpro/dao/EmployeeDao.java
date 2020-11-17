@@ -7,5 +7,9 @@ import ibm.pracpro.model.Employee;
 
 @Repository
 public interface EmployeeDao extends JpaRepository<Employee, String> {
-
+	
+//	@Query("select id,name,salary,age,empDate,did from Employee where name is like CONCAT('%',:name,'%')")
+//	public List<Employee> selectEmpNameLike(@Param("name")String name);
+	
+	
 }
