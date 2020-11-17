@@ -13,25 +13,25 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeDao employeeDao;
-	
+
 	@Override
 	public List<Employee> selectAll() {
 		// TODO Auto-generated method stub
-		List<Employee> list = employeeDao.findAll();
+		List<Employee> list = (List<Employee>) employeeDao.findAll();
 		return list;
 	}
 
 	@Override
 	public int save(Employee e) {
 		// TODO Auto-generated method stub
-		
-		return employeeDao.save(e)!=null?1:0;
+
+		return employeeDao.save(e) != null ? 1 : 0;
 	}
 
 	@Override
-	public Employee getEmployee(String id) {
+	public Employee getEmployeeById(String id) {
 		// TODO Auto-generated method stub
-		return employeeDao.getOne(id);
+		return employeeDao.findById(id).get();
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-            flag = 0;
+			flag = 0;
 		}
 		return flag;
 	}
@@ -52,7 +52,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public int update(Employee e) {
 		// TODO Auto-generated method stub
-		return employeeDao.save(e)!=null?1:0;
+		return employeeDao.save(e) != null ? 1 : 0;
+	}
+
+	@Override
+	public List<Employee> selectNameLike(String name) {
+		// TODO Auto-generated method stub
+		return employeeDao.selectEmpNameLike(name);
 	}
 
 }

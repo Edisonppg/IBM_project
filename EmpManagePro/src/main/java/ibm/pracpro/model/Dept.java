@@ -9,11 +9,12 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Dept {
+
 	@Id
 	String id;
-	
+
 	String deptName;
-	
+
 	Date creDate;
 
 	public Dept() {
@@ -56,6 +57,5 @@ public class Dept {
 	public String toString() {
 		return "Dept [id=" + id + ", deptName=" + deptName + ", creDate=" + creDate + "]";
 	}
-	
-	
+
 }

@@ -6,25 +6,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table
 public class User {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//自增长主键
+	@GeneratedValue(strategy = GenerationType.AUTO) // 自增长主键
 	String id;
-	
+
 	String userName;
-	
+
 	String realName;
-	
+
 	String password;
-	
+
 	String sex;
-	
+
 	Integer privilege;
 
-	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -93,6 +92,5 @@ public class User {
 		return "User [id=" + id + ", userName=" + userName + ", realName=" + realName + ", password=" + password
 				+ ", sex=" + sex + ", privilege=" + privilege + "]";
 	}
-	
-	
+
 }

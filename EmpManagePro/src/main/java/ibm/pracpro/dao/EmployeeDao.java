@@ -1,15 +1,17 @@
 package ibm.pracpro.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import ibm.pracpro.model.Employee;
 
 @Repository
-public interface EmployeeDao extends JpaRepository<Employee, String> {
-	
-//	@Query("select id,name,salary,age,empDate,did from Employee where name is like CONCAT('%',:name,'%')")
-//	public List<Employee> selectEmpNameLike(@Param("name")String name);
-	
-	
+public interface EmployeeDao extends CrudRepository<Employee, String> {
+
+	@Query(value = "select e from Employee e where e.name like %?1%")
+	public List<Employee> selectEmpNameLike(String name);
+
 }

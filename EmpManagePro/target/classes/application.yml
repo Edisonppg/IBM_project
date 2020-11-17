@@ -1,19 +1,21 @@
 server:
-  port: 8090
+   port: 8090
 
 spring: 
- datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/empmanage?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-    username: root
-    password: root
- thymeleaf:
-    prefix:
-      classpath: /templates   # 访问template下的html文件需要配置模板，映射
-    cache: false # 开发时关闭缓存,不然没法看到实时页面
+   datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/empmanage?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: 123456
+   thymeleaf:
+      prefix:
+         classpath: /templates   # 访问template下的html文件需要配置模板，映射
+      cache: false # 开发时关闭缓存,不然没法看到实时页面
 
-jpa: 
- hibernate: 
-    ddl-auto: update
- show-sql: true
- database-platform: org.hibernate.dialect.MySQL5Dialect
+   jpa: 
+      hibernate: 
+         ddl-auto: update
+      show-sql: true
+      database-platform: org.hibernate.dialect.MySQL5Dialect
+      naming: 
+         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl

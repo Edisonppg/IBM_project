@@ -9,26 +9,25 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Employee {
+
 	@Id
 	String id;
-	
+
 	String name;
-	
+
 	double salary;
-	
+
 	Integer age;
-	
+
 	Date empDate;
-	
+
 	String did;
 
-	
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	public Employee(String id, String name, double salary, Integer age, Date empDate, String did) {
 		super();
 		this.id = id;
@@ -39,16 +38,13 @@ public class Employee {
 		this.did = did;
 	}
 
-
 	public Date getEmpDate() {
 		return empDate;
 	}
 
-
 	public void setEmpDate(Date empDate) {
 		this.empDate = empDate;
 	}
-
 
 	public String getId() {
 		return id;
@@ -82,7 +78,6 @@ public class Employee {
 		this.age = age;
 	}
 
-
 	public String getDid() {
 		return did;
 	}
@@ -91,14 +86,10 @@ public class Employee {
 		this.did = did;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", age=" + age + ", empDate=" + empDate
 				+ ", did=" + did + "]";
 	}
 
-	
-	
-	
 }
