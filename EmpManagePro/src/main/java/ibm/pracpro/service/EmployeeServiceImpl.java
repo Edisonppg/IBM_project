@@ -1,5 +1,6 @@
 package ibm.pracpro.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		// TODO Auto-generated method stub
 		int flag = 0;
 		try {
-			employeeDao.deleteById(id);
-			flag = 1;
+			Employee emp = employeeDao.findById(id).get();
+			emp.setQuitDate(new Date());
+			flag = employeeDao.save(emp)!=null?1:0;
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
