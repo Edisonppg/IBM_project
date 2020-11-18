@@ -6,7 +6,7 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
       url: jdbc:mysql://localhost:3306/empmanage?useUnicode=true&characterEncoding=UTF-8&useSSL=false
       username: root
-      password: 123456
+      password: root
    thymeleaf:
       prefix:
          classpath: /templates   # 访问template下的html文件需要配置模板，映射

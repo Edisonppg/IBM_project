@@ -22,11 +22,15 @@ public class Employee {
 	Date empDate;
 
 	String did;
+	
+	Date quitDate;
 
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
 
 	public Employee(String id, String name, double salary, Integer age, Date empDate, String did) {
 		super();
@@ -37,6 +41,17 @@ public class Employee {
 		this.empDate = empDate;
 		this.did = did;
 	}
+
+
+	public Date getQuitDate() {
+		return quitDate;
+	}
+
+	public void setQuitDate(Date quitDate) {
+		this.quitDate = quitDate;
+	}
+
+
 
 	public Date getEmpDate() {
 		return empDate;

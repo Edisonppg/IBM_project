@@ -14,4 +14,6 @@ public interface EmployeeDao extends CrudRepository<Employee, String> {
 	@Query(value = "select e from Employee e where e.name like %?1%")
 	public List<Employee> selectEmpNameLike(String name);
 
+//	@Query(value = "update Employee e set e.quitDate=?1 where e.id=?2")
+//	public int delete(Date date,String id);
 }
