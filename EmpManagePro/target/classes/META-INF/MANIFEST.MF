@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Implementation-Title: EmpMangePro
 Implementation-Version: 0.0.1-SNAPSHOT
@@ -8,3 +9,15 @@ Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/EmpMangePro
 Created-By: Maven Integration for Eclipse
 
+=======
+Manifest-Version: 1.0
+Implementation-Title: EmpMangePro
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Administrator
+Implementation-Vendor-Id: ibm.pracpro
+Build-Jdk: 1.8.0_261
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/EmpMangePro
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> 8b5f0c81db70df4e2aa3ed361213cb59ebe886a9
