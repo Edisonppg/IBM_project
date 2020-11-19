@@ -63,4 +63,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDao.selectEmpNameLike(name);
 	}
 
+	@Override
+	public List<Employee> initSelect(int pageNum) {
+		// TODO Auto-generated method stub
+		int index = (pageNum-1)*20;
+		return employeeDao.initSelect(index);
+	}
+
+	
 }

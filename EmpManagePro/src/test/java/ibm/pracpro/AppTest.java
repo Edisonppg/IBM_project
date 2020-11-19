@@ -37,6 +37,12 @@ public class AppTest {
 	}
 
 	@Test
+	public void initSelect() {
+		Employee e = new Employee();
+		System.out.println(service.initSelect(1));
+	}
+	
+	@Test
 	public void updateOne() {
 		Employee emp = service.getEmployeeById("123456");
 		System.out.println(emp);

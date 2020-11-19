@@ -1,5 +1,6 @@
 package ibm.pracpro.service;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +16,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int save(User u) {
 		// TODO Auto-generated method stub
+		u.setPassword(DigestUtils.md5Hex(u.getPassword()));
 		return userDao.save(u)!=null?1:0;
 	}
 
 	@Override
 	public int update(User u) {
 		// TODO Auto-generated method stub
+		u.setPassword(DigestUtils.md5Hex(u.getPassword()));
 		return userDao.save(u)!=null?1:0;
 	}
 

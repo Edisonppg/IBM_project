@@ -28,6 +28,7 @@ public class CodeController {
         response.setContentType("image/jpeg");
         //生成验证码
         String capText = captchaProducer.createText();
+        System.out.println("当前验证码是："+capText);
         request.getSession().setAttribute("checknum", capText);
         //向客户端写出
         BufferedImage bi = captchaProducer.createImage(capText);

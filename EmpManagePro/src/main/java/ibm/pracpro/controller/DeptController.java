@@ -20,7 +20,12 @@ public class DeptController {
 	public String saveDept(Dept dept) {
 		int result = 0;
 		try {
-			result = service.save(dept);
+			Dept d = service.getDeptById(dept.getId());
+			if(d==null) {
+				result = service.save(dept);
+			}else {
+				return "部门id已存在，请重新输入";
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -59,7 +64,7 @@ public class DeptController {
 		}
 	}
 	
-	
+	@RequestMapping("delete")
 	public String deleteDept(String id) {
 		
 			service.delete(id);

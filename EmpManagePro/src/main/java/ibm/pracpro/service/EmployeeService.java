@@ -16,4 +16,6 @@ public interface EmployeeService {
 	Employee getEmployeeById(String id);
 
 	List<Employee> selectNameLike(String name);
+	
+	List<Employee> initSelect(int pageNum);
 }

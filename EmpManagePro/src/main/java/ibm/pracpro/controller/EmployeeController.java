@@ -1,10 +1,11 @@
 package ibm.pracpro.controller;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.alibaba.fastjson.JSON;
 
 import ibm.pracpro.model.Employee;
 import ibm.pracpro.service.EmployeeService;
@@ -59,11 +60,11 @@ public class EmployeeController {
 			return "只允许选择一种查询方式，id或者名字";
 		}
 		if(example.getId()!=null) {//id查询
-			return JSONObject.valueToString(service.getEmployeeById(example.getId()));
+			return JSON.toJSONString(service.getEmployeeById(example.getId()));
 		}else if (example.getName()!=null) {//名字模糊查询
-			return service.selectNameLike(example.getName()).toString();
+			return JSON.toJSONString(service.selectNameLike(example.getName()));
 		}else {
-			return "fail";
+			return JSON.toJSONString(service.initSelect(0));
 		}
 	}
 	

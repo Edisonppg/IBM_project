@@ -12,9 +12,9 @@ import ibm.pracpro.model.Dept;
 @Repository
 public interface DeptDao extends CrudRepository<Dept, String> {
 
-	@Query(value = "select e from Dept e where e.deptName like %?1%")
+	@Query(value = "select d from Dept d where d.deptName like %?1%")
 	public List<Dept> selectDeptNameLike(String deptName);
 
-//	@Query(value = "update Employee e set e.quitDate=?1 where e.id=?2")
-//	public int delete(Date date,String id);
+	@Query(value = "select d.id from Dept d")
+	public List<String> selectAllOnlyId();
 }
