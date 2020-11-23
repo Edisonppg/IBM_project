@@ -42,6 +42,20 @@ public class Employee {
 		this.did = did;
 	}
 
+	
+
+	public Employee(String id, String name, double salary, Integer age, Date empDate, String did, Date quitDate) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
+		this.age = age;
+		this.empDate = empDate;
+		this.did = did;
+		this.quitDate = quitDate;
+	}
+
+
 
 	public Date getQuitDate() {
 		return quitDate;
@@ -101,10 +115,13 @@ public class Employee {
 		this.did = did;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", age=" + age + ", empDate=" + empDate
-				+ ", did=" + did + "]";
+				+ ", did=" + did + ", quitDate=" + quitDate + "]";
 	}
 
+	
 }

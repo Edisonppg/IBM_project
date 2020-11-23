@@ -1,42 +1,52 @@
 package ibm.pracpro.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+@Component
 public class RedisUtil {
 
 	@Autowired
-	private static JedisPool jedisPool;
+	private JedisPool jedisPool;
 
-	public static String set(String key, String value) {
+	public String set(String key, String value) {
 		Jedis jedis = null;
+		String result=null;
+		System.out.println(jedisPool);
 		try {
 			jedis = jedisPool.getResource();
-			return jedis.set(key, value);
+			result= jedis.set(key, value);
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			return "0";
 		} finally {
 			if (jedis != null) {
 				jedis.close();
 			}
 		}
+		return result;
 	}
 
-	public static String get(String key) {
+	public String get(String key) {
 		Jedis jedis = null;
+		String result=null;
+//		System.out.println(jedisPool);
 		try {
 			jedis = jedisPool.getResource();
-			return jedis.get(key);
+			result= jedis.get(key);
 		} catch (Exception e) {
 			// TODO: handle exception
-			return "0";
+			e.printStackTrace();
+			result= "0";
 		} finally {
 			if (jedis != null) {
 				jedis.close();
 			}
 		}
+		return result;
 	}
 }

@@ -12,7 +12,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // 自增长主键
-	String id;
+	Integer id;
 
 	String userName;
 
@@ -37,11 +37,11 @@ public class User {
 		this.sex = sex;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

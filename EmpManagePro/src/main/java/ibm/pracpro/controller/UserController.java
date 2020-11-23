@@ -21,13 +21,16 @@ import ibm.pracpro.utils.RedisUtil;
 public class UserController {
 
 	@Autowired
+	private RedisUtil redisUtil;
+	
+	@Autowired
 	private UserService service;
 
 	@RequestMapping("regist")
 	public String saveUser(@RequestBody User u, @RequestParam("key") String key, @RequestParam("uuid") String uuid) {
-		String checknum = RedisUtil.get(uuid + "key");
+		String checknum = redisUtil.get(uuid + "key");
 		System.out.println(checknum);
-		System.out.println(checknum);
+		System.out.println(uuid);
 		System.out.println(u);
 		System.out.println(key);
 		if (checknum != null && !checknum.equals(key)) {
@@ -38,6 +41,7 @@ public class UserController {
 		}
 		int result = 0;
 		try {
+			u.setPrivilege(0);
 			result = service.save(u);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -85,7 +89,7 @@ public class UserController {
 			return "0";// 用户名不存在
 		}
 //		DigestUtils.md5Hex(password)
-		if (u.getPassword().equals(password)) {
+		if (u.getPassword().equals(DigestUtils.md5Hex(password))) {//加密匹配
 			return JSON.toJSONString(u);// 登录成功返回对象json字符串
 		} else {
 			return "1";// 密码错误

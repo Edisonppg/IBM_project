@@ -1,9 +1,15 @@
 package ibm.pracpro.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.alibaba.fastjson.JSON;
 
 import ibm.pracpro.model.Dept;
 import ibm.pracpro.service.DeptService;
@@ -24,7 +30,7 @@ public class DeptController {
 			if(d==null) {
 				result = service.save(dept);
 			}else {
-				return "部门id已存在，请重新输入";
+				return "0";//部门id已存在
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -54,11 +60,18 @@ public class DeptController {
 	}
 	
 	@RequestMapping("select")
-	public String selectDept(Dept example) {
+	public String selectDept(@RequestBody Dept example) {
 		if(example.getId()!=null) {
-			return service.getDeptById(example.getId()).toString();
+			List<Dept> list = new ArrayList<Dept>();
+			Dept d = service.getDeptById(example.getId());
+			if(d!=null) {
+				list.add(d);
+				return JSON.toJSONString(list);
+			}else {
+				return JSON.toJSONString(null);
+			}
 		}else if (example.getDeptName()!=null) {
-			return service.selectNameLike(example.getDeptName()).toString();
+			return JSON.toJSONString(service.selectNameLike(example.getDeptName()));
 		}else {
 			return "fail";
 		}
@@ -66,9 +79,13 @@ public class DeptController {
 	
 	@RequestMapping("delete")
 	public String deleteDept(String id) {
-		
-			service.delete(id);
-			return "success";
+		service.delete(id);
+		return "1";
+	}
+	
+	@RequestMapping("initSelect")
+	public String iselect() {
+		return JSON.toJSONString(service.selectAll());
 	}
 	
 }

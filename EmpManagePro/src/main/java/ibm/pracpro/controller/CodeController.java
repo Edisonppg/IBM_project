@@ -21,11 +21,15 @@ import ibm.pracpro.utils.RedisUtil;
 @CrossOrigin
 public class CodeController {
 	@Autowired
+	private RedisUtil redisUtil;
+	
+	@Autowired
 	private Producer captchaProducer = null;
 
 	@RequestMapping("/kaptcha")
 	public void getKaptchaImage(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("uuid") String uuid) throws Exception {
+		System.out.println(uuid);
 		response.setDateHeader("Expires", 0);
 		response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
 		response.addHeader("Cache-Control", "post-check=0, pre-check=0");
@@ -34,7 +38,8 @@ public class CodeController {
 		// 生成验证码
 		String capText = captchaProducer.createText();
 		System.out.println("当前验证码是：" + capText);
-		RedisUtil.set(uuid + "key", capText);// 向redis中存入验证码
+		redisUtil.set(uuid + "key", capText);// 向redis中存入验证码
+//		System.out.println(redisUtil.get(uuid + "key"));
 //        request.getSession().setAttribute("checknum", capText);//前后端分离后session无法保存
 		// 向客户端写出
 		BufferedImage bi = captchaProducer.createImage(capText);

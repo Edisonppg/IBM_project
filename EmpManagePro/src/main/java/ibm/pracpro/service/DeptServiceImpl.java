@@ -1,6 +1,7 @@
 package ibm.pracpro.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,12 @@ public class DeptServiceImpl implements DeptService {
 	@Override
 	public Dept getDeptById(String id) {
 		// TODO Auto-generated method stub
-		return DeptDao.findById(id).get();
+		Optional<Dept> result = DeptDao.findById(id);
+		if(result!=null&&result.isPresent()) {
+			return result.get();
+		}else {
+			return null;
+		}
 	}
 
 	@Override

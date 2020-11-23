@@ -1,5 +1,6 @@
 package ibm.pracpro.config;
 
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,14 +36,16 @@ public class RedisConfig {
 
 	@Bean
 	public JedisPool redisPoolFactory() throws Exception {
-		JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+		GenericObjectPoolConfig jedisPoolConfig = new JedisPoolConfig();
 		jedisPoolConfig.setMaxIdle(maxIdle);
+		jedisPoolConfig.setMinIdle(50);
 		jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
+		jedisPoolConfig.setMaxTotal(100);
 		// 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true
 		jedisPoolConfig.setBlockWhenExhausted(blockWhenExhausted);
 		// 是否启用pool的jmx管理功能, 默认true
 		jedisPoolConfig.setJmxEnabled(true);
-		JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password);
+		JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, null);
 		return jedisPool;
 	}
 

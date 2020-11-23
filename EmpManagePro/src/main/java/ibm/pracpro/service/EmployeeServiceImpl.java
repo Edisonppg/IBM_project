@@ -2,6 +2,7 @@ package ibm.pracpro.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,14 +26,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public int save(Employee e) {
 		// TODO Auto-generated method stub
-
 		return employeeDao.save(e) != null ? 1 : 0;
 	}
 
 	@Override
 	public Employee getEmployeeById(String id) {
 		// TODO Auto-generated method stub
-		return employeeDao.findById(id).get();
+		Optional<Employee> result = employeeDao.findById(id);
+		if(result!=null&&result.isPresent()) {
+			return result.get();
+		}else {
+			return null;
+		}
 	}
 
 	@Override
