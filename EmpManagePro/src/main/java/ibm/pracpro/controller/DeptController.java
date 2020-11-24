@@ -23,12 +23,17 @@ public class DeptController {
 	private DeptService service;
 	
 	@RequestMapping("save")
-	public String saveDept(Dept dept) {
+	public String saveDept(@RequestBody Dept dept) {
 		int result = 0;
 		try {
 			Dept d = service.getDeptById(dept.getId());
 			if(d==null) {
-				result = service.save(dept);
+				Dept de = service.getDeptByName(dept.getDeptName());
+				if(de==null) {
+					result = service.save(dept);
+				}else {
+					return "1";//部门重名
+				}
 			}else {
 				return "0";//部门id已存在
 			}
@@ -44,10 +49,16 @@ public class DeptController {
 	}
 	
 	@RequestMapping("update")
-	public String updatDept(Dept dept) {
+	public String updatDept(@RequestBody Dept dept) {
+		System.out.println(dept);
 		int result = 0;
 		try {
-			result = service.update(dept);
+			Dept de = service.getDeptByName(dept.getDeptName());
+			if(de==null) {
+				result = service.update(dept);
+			}else {
+				return "1";//部门重名
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

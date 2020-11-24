@@ -16,4 +16,6 @@ public interface DeptService {
 	Dept getDeptById(String id);
 
 	List<Dept> selectNameLike(String deptName);
+	
+	Dept getDeptByName(String deptName);
 }

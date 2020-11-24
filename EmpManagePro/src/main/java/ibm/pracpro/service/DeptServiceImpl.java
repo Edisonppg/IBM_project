@@ -67,6 +67,12 @@ public class DeptServiceImpl implements DeptService {
 		return DeptDao.selectDeptNameLike(deptName);
 	}
 
+	@Override
+	public Dept getDeptByName(String deptName) {
+		// TODO Auto-generated method stub
+		return DeptDao.findDeptByName(deptName);
+	}
+
 	
 }
 

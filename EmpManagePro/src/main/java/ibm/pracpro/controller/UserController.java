@@ -33,6 +33,7 @@ public class UserController {
 		System.out.println(uuid);
 		System.out.println(u);
 		System.out.println(key);
+		key=key.toUpperCase();
 		if (checknum != null && !checknum.equals(key)) {
 			return "0";// 验证码错误
 		}
@@ -56,6 +57,7 @@ public class UserController {
 
 	@RequestMapping("update")
 	public String updateUser(String userName, String oldpsw, String newpsw) {
+		System.out.println(userName);
 		int result = 0;
 		try {
 			User u = service.getUserByName(userName);
@@ -63,6 +65,7 @@ public class UserController {
 				if (u.getPassword().equals(DigestUtils.md5Hex(newpsw))) {
 					return "1";// 返回值1为新旧密码相同
 				} else {
+					System.out.println(u);
 					u.setPassword(newpsw);
 					result = service.update(u);
 				}

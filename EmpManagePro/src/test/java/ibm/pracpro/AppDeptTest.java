@@ -24,7 +24,10 @@ public class AppDeptTest {
 
 	@Test
 	public void saveone() {// 新建
-		Dept e = new Dept("102","外交部门" ,new Date());
+		Dept e = new Dept();
+		e.setCreDate(new Date());
+		e.setDeptName("aaa");
+		e.setId("103");
 		String result = controller.saveDept(e);
 		System.out.println(result);
 	}

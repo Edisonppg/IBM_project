@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 @Entity
 @Table
 public class Employee {
@@ -19,10 +21,12 @@ public class Employee {
 
 	Integer age;
 
+	@JSONField(format = "yyyy-MM-dd")
 	Date empDate;
 
 	String did;
 	
+	@JSONField(format = "yyyy-MM-dd")
 	Date quitDate;
 
 	public Employee() {
@@ -56,15 +60,15 @@ public class Employee {
 	}
 
 
-
+	
 	public Date getQuitDate() {
 		return quitDate;
 	}
 
+	
 	public void setQuitDate(Date quitDate) {
 		this.quitDate = quitDate;
 	}
-
 
 
 	public Date getEmpDate() {

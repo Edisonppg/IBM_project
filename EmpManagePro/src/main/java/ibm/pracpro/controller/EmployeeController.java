@@ -65,7 +65,7 @@ public class EmployeeController {
 			Employee e = service.getEmployeeById(example.getId());
 			if(e!=null) {
 				list.add(e);
-				return JSON.toJSONString(list);
+				return JSON.toJSONString(list);//即使单个结果也要返回list
 			}else {
 				return JSON.toJSONString(null);
 			}
@@ -85,7 +85,7 @@ public class EmployeeController {
 			return "0";//重复删除离职
 		}else {
 			service.delete(id);
-			return "1";
+			return "1";//设置离职成功
 		}
 	}
 	

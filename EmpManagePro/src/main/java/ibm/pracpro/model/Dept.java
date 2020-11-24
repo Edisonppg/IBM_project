@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 @Entity
 @Table
 public class Dept {
@@ -15,6 +17,7 @@ public class Dept {
 
 	String deptName;
 
+	@JSONField(format = "yyyy-MM-dd")
 	Date creDate;
 
 	public Dept() {
@@ -22,12 +25,12 @@ public class Dept {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Dept(String id, String deptName, Date creDate) {
-		super();
-		this.id = id;
-		this.deptName = deptName;
-		this.creDate = creDate;
-	}
+//	public Dept(String id, String deptName, Date creDate) {
+//		super();
+//		this.id = id;
+//		this.deptName = deptName;
+//		this.creDate = creDate;
+//	}
 
 	public String getId() {
 		return id;
