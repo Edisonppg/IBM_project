@@ -29,7 +29,6 @@ public class CodeController {
 	@RequestMapping("/kaptcha")
 	public void getKaptchaImage(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("uuid") String uuid) throws Exception {
-		System.out.println(uuid);
 		response.setDateHeader("Expires", 0);
 		response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
 		response.addHeader("Cache-Control", "post-check=0, pre-check=0");

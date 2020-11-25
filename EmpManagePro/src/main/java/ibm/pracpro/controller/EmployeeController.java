@@ -79,7 +79,6 @@ public class EmployeeController {
 	
 	@RequestMapping("delete")
 	public String deleteEmp(String id) {
-		System.out.println(id);
 		Employee emp = service.getEmployeeById(id);
 		if(emp.getQuitDate() != null) {
 			return "0";//重复删除离职

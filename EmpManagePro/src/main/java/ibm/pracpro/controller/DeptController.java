@@ -50,15 +50,9 @@ public class DeptController {
 	
 	@RequestMapping("update")
 	public String updatDept(@RequestBody Dept dept) {
-		System.out.println(dept);
 		int result = 0;
 		try {
-			Dept de = service.getDeptByName(dept.getDeptName());
-			if(de==null) {
-				result = service.update(dept);
-			}else {
-				return "1";//部门重名
-			}
+			result = service.update(dept);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
